@@ -1,0 +1,40 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+function AllTrainsPage() {
+  const trains = [
+    { id: 1, name: 'Express', delay: false, expensive: true, availableSeats: 50, coachClass: 'First Class' },
+    { id: 2, name: 'Superfast', delay: true, expensive: false, availableSeats: 100, coachClass: 'Economy Class' },
+    // Add more train objects here
+  ];
+
+  return (
+    <div className="container mt-2">
+      <h2>All Trains</h2>
+      <table className="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Delay</th>
+            <th>Expensive</th>
+            <th>Available Seats</th>
+            <th>Coach Class</th>
+          </tr>
+        </thead>
+        <tbody>
+          {trains.map(train => (
+            <tr key={train.id}>
+              <td><Link to={`/trains/${train.id}`}>{train.name}</Link></td>
+              <td>{train.delay ? 'Yes' : 'No'}</td>
+              <td>{train.expensive ? 'Yes' : 'No'}</td>
+              <td>{train.availableSeats}</td>
+              <td>{train.coachClass}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+export default AllTrainsPage;

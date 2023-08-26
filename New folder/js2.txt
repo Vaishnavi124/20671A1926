@@ -1,0 +1,36 @@
+import React from 'react';
+import { useParams } from 'react-router-dom';
+
+function SingleTrainPage() {
+  const { id } = useParams();
+  const train = { id: 1, name: 'Express', delay: false, expensive: true, availableSeats: 50, coachClass: 'First Class' };
+  // Fetch the train data based on the id from the backend API
+
+  return (
+    <div className="container mt-2">
+      <h2>Train Details</h2>
+      <table className="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Delay</th>
+            <th>Expensive</th>
+            <th>Available Seats</th>
+            <th>Coach Class</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{train.name}</td>
+            <td>{train.delay ? 'Yes' : 'No'}</td>
+            <td>{train.expensive ? 'Yes' : 'No'}</td>
+            <td>{train.availableSeats}</td>
+            <td>{train.coachClass}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+export default SingleTrainPage;
